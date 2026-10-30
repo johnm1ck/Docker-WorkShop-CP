@@ -6,3 +6,14 @@
 # here, or the image will build without seed data paths being reachable.
 #
 # (Fill in the list below.)
+app/node_modules
+.github
+.git
+.gitignore
+.env
+.gitattributes
+README.md
+.env.example
+Dockerfile
+.dockerignore
+npm-debug.log
