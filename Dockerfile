@@ -22,12 +22,12 @@ COPY . .
 # =============================================================================
 
 # TODO(step-4d): set the runtime base image (same tag as step-4a for consistency).
-FROM builder
+FROM node:20.11-slim 
 
 WORKDIR /app
 
 # TODO(step-4e): copy the fully-installed app from the builder stage.
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app /app
 
 ENV NODE_ENV=production
 EXPOSE 3000
@@ -39,4 +39,4 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=5 \
 CMD node -e "require('http').get('http://localhost:3000/health', r => process.exit(r.statusCode===200?0:1)).on('error', () => process.exit(1))"
 
 # TODO(step-4g): declare the container start command.
-CMD ["node", "index.js"]
+CMD ["node", "src/index.js"]
